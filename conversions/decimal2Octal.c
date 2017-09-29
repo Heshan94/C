@@ -1,35 +1,34 @@
-/*****Decimal to octal conversion*******************/
 #include <stdio.h>
-void decimal2Octal(long decimalnum);
- 
-int main(){
 
-    long decimalnum;
-
-    printf("Enter the decimal number: ");
-	scanf("%ld", &decimalnum);
+/********Conversion of decimal numbers to octal numbers************/ 
+void decimal2Octal(int decimalNumber)
+{	
+	long quotient;
+	//for 32-bit number
+    int octalNumber[16];
+	int i = 1, j;
     
-    decimal2Octal(decimalnum);
+	quotient = decimalNumber;
 
-return 0;
-}
- 
-/********function for convert decimal numbers to octal numbers************/ 
-void decimal2Octal(long decimalnum){
-  long remainder, quotient;
-
-    int octalNumber[100], i = 1, j;
-    quotient = decimalnum;
-
-    while (quotient != 0){
+    while (quotient != 0)
+	{
 		octalNumber[i++] = quotient % 8;
-
         quotient = quotient / 8;
 	}
-
+	
+	printf("It's Octal equivalent is = ");
     for (j = i - 1; j > 0; j--)
+	{
+		printf("%d", octalNumber[j]);
+	}
+}
 
-        printf("%d", octalNumber[j]);
-
-	printf("\n");
+/*** Testing the implementation ***/ 
+int main()
+{
+    int input;
+    printf("Enter the decimal number: ");
+	scanf("%d", &input);
+    decimal2Octal(input);
+	return 0;
 }

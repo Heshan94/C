@@ -1,46 +1,42 @@
-/*****Decimal to Hexadecimal conversion*******************/
 #include <stdio.h>
-void decimal2Hexadecimal(long num);
 
- 
-int main(){
-	
-  long decimalnum;
- 
-  printf("Enter decimal number: ");
-  scanf("%ld", &decimalnum);
- 
-  decimal2Hexadecimal(decimalnum);
+/********Conversion of decimal number to hexadecimal number****************/
+void decimal2Hexadecimal(int decimalNumber)
+{
+	long quotient, remainder;
+	int i, j = 0;
+	//for 32-bit number
+	char hexadecimalnum[8];
 
-return 0;
-}
+		quotient = decimalNumber;
 
-/********function for convert decimal number to hexadecimal number****************/
-void decimal2Hexadecimal(long num){
-
-long decimalnum=num;
-long quotient, remainder;
-int i, j = 0;
-char hexadecimalnum[100];
-
-    quotient = decimalnum;
-
-	while (quotient != 0){
-
-        remainder = quotient % 16;
+		while (quotient != 0)
+		{
+			remainder = quotient % 16;
 			if (remainder < 10)
-            hexadecimalnum[j++] = 48 + remainder;
+			hexadecimalnum[j++] = 48 + remainder;
 
 			else
 			hexadecimalnum[j++] = 55 + remainder;
 
-			quotient = quotient / 16;}
-
-    // print the hexadecimal number
-
-    for (i = j; i >= 0; i--){
-            printf("%c", hexadecimalnum[i]);}
-
-	printf("\n");
+			quotient = quotient / 16;
+		}
+		
+		printf("It's Hexadecimal equivalent is = ");
+		// print the hexadecimal number
+		for (i = j-1; i >= 0; i--)
+		{
+			printf("%c", hexadecimalnum[i]);
+		}
 }
+ 
+/*** Testing the implementation ***/
+int main(){
+	
+  int input;
+  printf("Enter decimal number: ");
+  scanf("%d", &input);
+  decimal2Hexadecimal(input);
 
+return 0;
+}
